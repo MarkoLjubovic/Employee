@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Class
 {
-    public class Designer:IDesigner
+    public class Designer: Common,IDesigner
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
         public string Project { get; set; }
         public bool CanDraw { get; set; }
     }

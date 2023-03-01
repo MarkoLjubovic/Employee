@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IDeveloper:ICommon
+    public interface IDeveloper
     {
         string Project { get; set; }
         bool isStudent { get; set; }

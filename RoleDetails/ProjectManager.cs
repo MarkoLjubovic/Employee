@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Class
 {
-    public class ProjectManager:IProjectManager
+    public class ProjectManager: Common, IProjectManager
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
         public string Project { get; set; }
     }
 }

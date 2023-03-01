@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface ICEO:ICommon
+    public interface ICEO
     {
         int CeoYears { get; set; }
     }

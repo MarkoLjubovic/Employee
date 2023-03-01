@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface ISoftwareTester:ICommon
+    public interface ISoftwareTester
     {
         string Project { get; set; }
         bool UsesAutomatedTests { get; set; }

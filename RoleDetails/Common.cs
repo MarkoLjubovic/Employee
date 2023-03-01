@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Class
 {
-    public class Developer: Common, IDeveloper
+    public abstract class Common:ICommon
     {
-        public string Project { get; set; }
-        public bool isStudent { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
     }
 }

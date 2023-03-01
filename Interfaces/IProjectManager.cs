@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IProjectManager: ICommon
+    public interface IProjectManager
     {
         string Project { get; set; }
     }

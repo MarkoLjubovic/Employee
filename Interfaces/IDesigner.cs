@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IDesigner: ICommon
+    public interface IDesigner
     {
         string Project { get; set; }
         bool CanDraw { get; set; }
