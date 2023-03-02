@@ -9,6 +9,6 @@ namespace Interfaces
     public interface IDeveloper
     {
         string Project { get; set; }
-        bool isStudent { get; set; }
+        bool IsStudent { get; set; }
     }
 }
