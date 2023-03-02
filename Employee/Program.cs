@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Employee
     {
         public static void Main(string[] args)
         {
-
+            CEO c = new CEO();
         }
     }
 }

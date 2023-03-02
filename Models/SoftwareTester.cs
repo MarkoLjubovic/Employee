@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class SoftwareTester:Common, ISoftwareTester
+    public class SoftwareTester : Common, ISoftwareTester
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public abstract class Common:ICommon
+    public class Common:ICommon
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

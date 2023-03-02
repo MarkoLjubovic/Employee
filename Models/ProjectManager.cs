@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class ProjectManager:Common,IProjectManager
+    internal class ProjectManager : Common, IProjectManager
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
