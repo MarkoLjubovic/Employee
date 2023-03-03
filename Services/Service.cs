@@ -26,22 +26,27 @@ namespace Services
 
                 case "remove":
                     Remove(cEO, designers, developers, projectManagers, softwareTesters);
+                    Help(cEO, designers, developers, projectManagers, softwareTesters);
                     break;
 
                 case "display":
                     Display(cEO, designers, developers, projectManagers, softwareTesters);
+                    Help(cEO, designers, developers, projectManagers, softwareTesters);
                     break;
 
                 case "list":
                     List(designers, developers, projectManagers, softwareTesters);
+                    Help(cEO, designers, developers, projectManagers, softwareTesters);
                     break;
 
                 case "ceo":
                     CEOList(cEO);
+                    Help(cEO, designers, developers, projectManagers, softwareTesters);
                     break;
 
                 case "dsnr":
                     DSNRList(designers);
+                    Help(cEO, designers, developers, projectManagers, softwareTesters);
                     break;
             }
         }
@@ -69,7 +74,8 @@ namespace Services
             designer.Project = Console.ReadLine();
             Console.WriteLine("CanDraw:");
             designer.CanDraw = Convert.ToBoolean(Console.ReadLine());
-            storage.designers.Add(designer);
+            designers.Add(designer);
+            DSNRList(designers);
         }
         public void AddDeveloper(List<Developer> developers)
         {
@@ -84,7 +90,8 @@ namespace Services
             developer.Project = Console.ReadLine();
             Console.WriteLine("IsStudent:");
             developer.IsStudent = Convert.ToBoolean(Console.ReadLine());
-            storage.developers.Add(developer);
+            developers.Add(developer);
+            DEVList(developers);
         }
         public void AddProjectManager(List<ProjectManager> projectManagers)
         {
@@ -161,7 +168,7 @@ namespace Services
         public void DSNRList(List<Designer> designers)
         {
             Console.WriteLine("List of designers:");
-            foreach (var dsnr in storage.designers)
+            foreach (var dsnr in designers)
             {
                 Console.WriteLine($"FirstName: {dsnr.FirstName}, LastName:{dsnr.LastName}, Age:{dsnr.Age}, Project:{dsnr.Project}, CanDraw:{dsnr.CanDraw}");
             }
@@ -184,11 +191,6 @@ namespace Services
             switch (unos)
             {
                 case "dsnr":
-                    Console.WriteLine("List of designers:");
-                    foreach (var dsnr in designers)
-                    {
-                        Console.WriteLine($"FirstName: {dsnr.FirstName}, LastName:{dsnr.LastName}, Age:{dsnr.Age}, Project:{dsnr.Project}, CanDraw:{dsnr.CanDraw}");
-                    }
                     Console.WriteLine("FirstName:");
                     var firstName = Console.ReadLine();
                     Console.WriteLine("LastName:");
@@ -199,36 +201,34 @@ namespace Services
                         if (firstName.Equals(design.FirstName) && lastName.Equals(design.LastName))
                         {
                             designers.Remove(design);
+                            break;
                         }
                     }
+                    DSNRList(designers);
                     break;
-
-                    Console.WriteLine("List of designers:");
-                    foreach (var dsnr in designers)
-                    {
-                        Console.WriteLine($"FirstName: {dsnr.FirstName}, LastName:{dsnr.LastName}, Age:{dsnr.Age}, Project:{dsnr.Project}, CanDraw:{dsnr.CanDraw}");
-                    }
-            }
-
-            public void Display(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, SoftwareTester softwareTester)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void List(List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, SoftwareTester softwareTester)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void AddProjectManager(List<ProjectManager> projectManagers)
-            {
-                throw new NotImplementedException();
             }
         }
 
         public void Display(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("List of employees");
+            Console.WriteLine($"FirstName: {cEO.FirstName}, LastName:{cEO.LastName}, Age:{cEO.Age}");
+            foreach (var dsnr in designers)
+            {
+                Console.WriteLine($"FirstName: {dsnr.FirstName}, LastName:{dsnr.LastName}, Age:{dsnr.Age}");
+            }
+            foreach (var dev in developers)
+            {
+                Console.WriteLine($"FirstName: {dev.FirstName}, LastName:{dev.LastName}, Age:{dev.Age}");
+            }
+            foreach (var pm in projectManagers)
+            {
+                Console.WriteLine($"FirstName: {pm.FirstName}, LastName:{pm.LastName}, Age:{pm.Age}");
+            }
+            foreach (var st in softwareTesters)
+            {
+                Console.WriteLine($"FirstName: {st.FirstName}, LastName:{st.LastName}, Age:{st.Age}");
+            }
         }
 
         public void List(List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
@@ -236,4 +236,5 @@ namespace Services
             throw new NotImplementedException();
         }
     }
+
 }

@@ -14,5 +14,6 @@ namespace Models
         public int Age { get; set; }
         public string Project { get; set; }
         public bool IsStudent { get; set; }
+
     }
 }

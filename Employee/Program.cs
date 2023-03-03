@@ -19,7 +19,7 @@ namespace Employee
 
             Service s=new Service();
             Storage storage = new Storage();
-            s.Help(cEO,storage.designers,developer,projectManager,softwareTester);
+            s.Help(cEO,storage.designers,storage.developers,storage.projectManagers,storage.softwareTesters);
         }
     }
 }
