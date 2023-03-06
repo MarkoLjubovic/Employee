@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using EmployeeStorage;
+using Models;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,13 @@ namespace Services
 {
     public class Service : IService
     {
-        Storage storage = new Storage();
-        public void Help(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
+        protected readonly IBaseService _baseService;
+        public Service(IBaseService baseService)
+        {
+            _baseService = baseService;
+        }
+
+        public void Help(List<Employee> employees)
         {
             Console.WriteLine("Available commands: 1. Add, 2. Remove, 3. Display, 4. List, 5. CEOList, 6. DSNRList");
             Console.WriteLine("Pick one:");
@@ -21,32 +27,32 @@ namespace Services
             switch (unos)
             {
                 case "add":
-                    Add(cEO, designers, developers, projectManagers, softwareTesters);
+                    Add(employees);
                     break;
 
                 case "remove":
-                    Remove(cEO, designers, developers, projectManagers, softwareTesters);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Remove();
+                    Help(employees);
                     break;
 
                 case "display":
-                    Display(cEO, designers, developers, projectManagers, softwareTesters);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Display();
+                    Help(employees);
                     break;
 
                 case "list":
-                    List(designers, developers, projectManagers, softwareTesters);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    List();
+                    Help(employees);
                     break;
 
                 case "ceo":
-                    CEOList(cEO);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    List();
+                    Help(employees);
                     break;
 
                 case "dsnr":
-                    DSNRList(designers);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    List();
+                    Help(employees);
                     break;
             }
         }
@@ -104,7 +110,7 @@ namespace Services
             projectManager.Age = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Project:");
             projectManager.Project = Console.ReadLine();
-            storage.projectManagers.Add(projectManager);
+            projectManagers.Add(projectManager);
         }
         public void AddSoftwareTester(List<SoftwareTester> softwareTesters)
         {
@@ -119,9 +125,9 @@ namespace Services
             softwareTester.Project = Console.ReadLine();
             Console.WriteLine("UsesAutomatedTests:");
             softwareTester.UsesAutomatedTests = Convert.ToBoolean(Console.ReadLine());
-            storage.softwareTesters.Add(softwareTester);
+            softwareTesters.Add(softwareTester);
         }
-        public void Add(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
+        public void Add(List<Employee> employees)
         {
             Console.WriteLine("Option Add is picked.");
             Console.WriteLine("Available roles: CEO, PM, DEV, DSNR, ST. Pick role you want to input:");
@@ -130,27 +136,28 @@ namespace Services
             switch (unos)
             {
                 case "ceo":
-                    AddCEO(cEO);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Add(employees);
+                    Help(employees);
                     break;
 
                 case "dsnr":
-                    AddDesigner(designers);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Add(employees);
+                    Help(employees);
                     break;
 
                 case "dev":
-                    AddDeveloper(developers);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Add(employees);
+                    Help(employees);
                     break;
 
                 case "pm":
-                    AddProjectManager(projectManagers);
-                    Help(cEO, designers, developers, projectManagers, softwareTesters);
+                    Add(employees);
+                    Help(employees);
                     break;
 
                 case "st":
-                    AddSoftwareTester(softwareTesters);
+                    Add(employees);
+                    Help(employees);
                     break;
             }
         }
@@ -184,56 +191,19 @@ namespace Services
             throw new NotImplementedException();
         }
 
-        public void Remove(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
+        public void Remove()
         {
-            Console.WriteLine("Pick user role you want to delete.");
-            var unos = Console.ReadLine().ToLower();
-            switch (unos)
-            {
-                case "dsnr":
-                    Console.WriteLine("FirstName:");
-                    var firstName = Console.ReadLine();
-                    Console.WriteLine("LastName:");
-                    var lastName = Console.ReadLine();
-
-                    foreach (var design in storage.designers)
-                    {
-                        if (firstName.Equals(design.FirstName) && lastName.Equals(design.LastName))
-                        {
-                            designers.Remove(design);
-                            break;
-                        }
-                    }
-                    DSNRList(designers);
-                    break;
-            }
+            _baseService.RemoveEmployee();
         }
 
-        public void Display(CEO cEO, List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
+        public void Display()
         {
-            Console.WriteLine("List of employees");
-            Console.WriteLine($"FirstName: {cEO.FirstName}, LastName:{cEO.LastName}, Age:{cEO.Age}");
-            foreach (var dsnr in designers)
-            {
-                Console.WriteLine($"FirstName: {dsnr.FirstName}, LastName:{dsnr.LastName}, Age:{dsnr.Age}");
-            }
-            foreach (var dev in developers)
-            {
-                Console.WriteLine($"FirstName: {dev.FirstName}, LastName:{dev.LastName}, Age:{dev.Age}");
-            }
-            foreach (var pm in projectManagers)
-            {
-                Console.WriteLine($"FirstName: {pm.FirstName}, LastName:{pm.LastName}, Age:{pm.Age}");
-            }
-            foreach (var st in softwareTesters)
-            {
-                Console.WriteLine($"FirstName: {st.FirstName}, LastName:{st.LastName}, Age:{st.Age}");
-            }
+            _baseService.EmployeeDisplay();
         }
 
-        public void List(List<Designer> designers, List<Developer> developers, List<ProjectManager> projectManagers, List<SoftwareTester> softwareTesters)
+        public void List()
         {
-            throw new NotImplementedException();
+            _baseService.EmployeeList();
         }
     }
 

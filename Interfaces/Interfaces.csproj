@@ -41,12 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICEO.cs" />
-    <Compile Include="ICommon.cs" />
-    <Compile Include="IDesigner.cs" />
-    <Compile Include="IDeveloper.cs" />
-    <Compile Include="IProjectManager.cs" />
-    <Compile Include="ISoftwareTester.cs" />
+    <Compile Include="IEmployee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

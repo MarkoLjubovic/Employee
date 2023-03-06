@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class SoftwareTester : Common, ISoftwareTester
+    public class SoftwareTester : Employee
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
         public string Project { get; set; }
         public bool UsesAutomatedTests { get; set; }
+
+        public override string FullInfo()
+        {
+            return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}, Project:{Project}, UsesAutomatedTests:{UsesAutomatedTests}";
+        }
     }
 }

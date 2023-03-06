@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using EmployeeStorage;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -12,14 +12,8 @@ namespace Employee
     {
         public static void Main(string[] args)
         {
-            CEO cEO = new CEO();
-            Developer developer = new Developer();
-            ProjectManager projectManager = new ProjectManager();
-            SoftwareTester softwareTester = new SoftwareTester();
-
-            Service s=new Service();
-            Storage storage = new Storage();
-            s.Help(cEO,storage.designers,storage.developers,storage.projectManagers,storage.softwareTesters);
+            Models.Employee employee=new Models.Employee();
+            //Service service = new Service();
         }
     }
 }

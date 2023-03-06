@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace IStorage
 {
-    public interface IDesigner
+    public class Class1
     {
-        string Project { get; set; }
-        bool CanDraw { get; set; }
     }
 }

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class CEO:Common,ICEO
+    public class CEO:Employee
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
         public int CeoYears { get; set; }
+
+        public override string FullInfo()
+        {
+            return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}, CeoYears:{CeoYears}";
+        }
     }
 }

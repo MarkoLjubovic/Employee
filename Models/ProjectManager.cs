@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class ProjectManager : Common, IProjectManager
+    public class ProjectManager : Employee
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
         public string Project { get; set; }
+
+        public override string FullInfo()
+        {
+            return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}, Project:{Project}";
+        }
     }
 }

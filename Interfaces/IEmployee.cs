@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface ICommon
+    public interface IEmployee
     {
+        int Id { get; set; }
+        string Role { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
         int Age { get; set; }
+
+        string FullInfo();
     }
 }
