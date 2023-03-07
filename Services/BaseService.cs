@@ -23,37 +23,35 @@ namespace Services
 
         public IEmployee AddEmployee()
         {
-            Console.WriteLine("Role:");
+            Console.WriteLine("Id:");
+            Model.Id= Common.Helper.AddInt();
             Model.Role = role;
             Console.WriteLine("FirstName:");
-            Model.FirstName = Console.ReadLine();
+            Model.FirstName = Common.Helper.AddString();
             Console.WriteLine("LastName:");
-            Model.LastName = Console.ReadLine();
+            Model.LastName = Common.Helper.AddString();
             Console.WriteLine("Age:");
-            Model.Age = Convert.ToInt32(Console.ReadLine());
+            Model.Age = Common.Helper.AddInt();
 
-            return Model;
+            return EmployeeStorage.Storage.AddEmployee(Model);
         }
 
-        public void RoleList()
+        public void RoleList(string role)
         {
             Console.WriteLine("Type role:");
-            string role=Console.ReadLine();
+            role=Common.Helper.AddString().ToUpper();
 
             foreach (var employee in EmployeeStorage.Storage.FindRole(role))
             {
-                employee.FullInfo();
+                Common.Helper.DisplayEmployees(employee);
             }
         }
 
         public void EmployeeList()
         {
-            foreach(var employee in EmployeeStorage.Storage.Employees())
+            foreach (var employee in EmployeeStorage.Storage.DisplayWithoutCEO())
             {
-                if (employee.Role != "CEO")
-                {
-                    employee.FullInfo();
-                }
+                Common.Helper.DisplayEmployees(employee);
             }
         }
 
@@ -62,7 +60,7 @@ namespace Services
             Console.WriteLine("Input Employee Id:");
             var employeeId=Convert.ToInt32(Console.ReadLine());
 
-            var employeeToRemove = EmployeeStorage.Storage.Employees().FirstOrDefault(x => x.Id == employeeId);
+            var employeeToRemove = EmployeeStorage.Storage.Display().FirstOrDefault(x => x.Id == employeeId);
 
             if(employeeToRemove != null)
             {
@@ -87,9 +85,9 @@ namespace Services
 
         public void EmployeeDisplay()
         {
-            foreach (var employee in EmployeeStorage.Storage.Employees())
+            foreach (var employee in EmployeeStorage.Storage.Display())
             {
-                employee.FullInfo();
+                Common.Helper.DisplayEmployees(employee);
             }
         }
     }

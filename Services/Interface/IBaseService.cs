@@ -13,7 +13,7 @@ namespace Services.Interface
         IEmployee AddEmployee();
         bool RemoveEmployee();
         void EmployeeList();
-        void RoleList();
+        void RoleList(string role);
         void EmployeeDisplay();
     }
 }

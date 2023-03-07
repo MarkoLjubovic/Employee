@@ -12,7 +12,7 @@ namespace EmployeeStorage
     {
         public static List<IEmployee> employeesList=new List<IEmployee>();
 
-        public IEmployee AddEmployee<T>(T employee) where T : IEmployee
+        public static IEmployee AddEmployee<T>(T employee) where T : IEmployee
         {
             employeesList.Add(employee);
             return employee;
@@ -23,8 +23,20 @@ namespace EmployeeStorage
             return employeesList.Remove(employee);
         }
 
-        public static List<IEmployee> Employees()
+        public static List<IEmployee> Display()
         {
+            return employeesList;
+        }
+
+        public static List<IEmployee> DisplayWithoutCEO()
+        {
+            foreach (var employee in employeesList)
+            {
+                if (employee.Role.ToLower() != "ceo")
+                {
+                    Console.WriteLine($"Id:{employee.Id}, Role:{employee.Role}, FirstName:{employee.FirstName}, LastName: {employee.LastName}, Age:{employee.Age}");
+                }
+            }
             return employeesList;
         }
 

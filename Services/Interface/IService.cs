@@ -9,20 +9,11 @@ namespace Services.Interface
 {
     public interface IService
     {
-        void Help(List<Employee> employees);
-        void Add(List<Employee> employees);
-        void Remove();
+        void Help(string role);
+        void Add(string role);
+        void RoleList(string role);
         void Display();
+        void Remove();
         void List();
-        void CEOList(CEO cEO);
-        void PMList(List<ProjectManager> projectManagers);
-        void DEVList(List<Developer> developers);
-        void DSNRList(List<Designer> designers);
-        void STList(List<SoftwareTester> softwareTesters);
-        void AddCEO(CEO cEO);
-        void AddDesigner(List<Designer> designers);
-        void AddDeveloper(List<Developer> developers);
-        void AddProjectManager(List<ProjectManager> projectManagers);
-        void AddSoftwareTester(List<SoftwareTester> softwareTesters);
     }
 }
