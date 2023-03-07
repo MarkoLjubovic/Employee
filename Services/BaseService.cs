@@ -12,6 +12,7 @@ namespace Services
 {
     public class BaseService<T> : IBaseService where T : IEmployee
     {
+
         private  T Model { get; set; }
         private string role;
 
@@ -43,16 +44,13 @@ namespace Services
 
             foreach (var employee in EmployeeStorage.Storage.FindRole(role))
             {
-                Common.Helper.DisplayEmployees(employee);
+                Console.WriteLine(employee.FullInfo());
             }
         }
 
         public void EmployeeList()
         {
-            foreach (var employee in EmployeeStorage.Storage.DisplayWithoutCEO())
-            {
-                Common.Helper.DisplayEmployees(employee);
-            }
+            EmployeeStorage.Storage.DisplayWithoutCEO();
         }
 
         public bool RemoveEmployee()
@@ -87,7 +85,7 @@ namespace Services
         {
             foreach (var employee in EmployeeStorage.Storage.Display())
             {
-                Common.Helper.DisplayEmployees(employee);
+                Console.WriteLine(employee.FullInfo());
             }
         }
     }

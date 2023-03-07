@@ -7,23 +7,20 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class DEVService : BaseService<Developer>
+    public class PMService : BaseService<ProjectManager>
     {
-        private readonly Developer _model;
-
-        public DEVService(Developer model, string role) : base(model, role)
+        private readonly ProjectManager _model;
+        public PMService(ProjectManager model, string role) : base(model, role)
         {
             _model = model;
             _model.Role = role;
         }
 
-        public void AddDeveloper()
+        public void AddProjectManager()
         {
             AddEmployee();
             Console.WriteLine("Project:");
             _model.Project = Common.Helper.AddString();
-            Console.WriteLine("IsStudent:");
-            _model.IsStudent=Convert.ToBoolean(Console.ReadLine());
         }
     }
 }

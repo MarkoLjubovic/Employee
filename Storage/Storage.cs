@@ -32,27 +32,18 @@ namespace EmployeeStorage
         {
             foreach (var employee in employeesList)
             {
-                if (employee.Role.ToLower() != "ceo")
+                if (employee.Role != "CEO")
                 {
-                    Console.WriteLine($"Id:{employee.Id}, Role:{employee.Role}, FirstName:{employee.FirstName}, LastName: {employee.LastName}, Age:{employee.Age}");
+                    employee.FullInfo();
                 }
             }
+
             return employeesList;
         }
 
         public static List<IEmployee> FindRole(string role)
         {
             return employeesList.Where(x=>x.Role==role).ToList();
-        }
-
-        public List<IEmployee> FindDifferentRole(string role)
-        {
-            return employeesList.Where(x => x.Role != role).ToList();
-        }
-
-        public bool SearchRole(string role)
-        {
-            return employeesList.Any(x => x.Role == role);
         }
     }
 }

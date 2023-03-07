@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class DEVService : BaseService<Developer>
+    public class STService : BaseService<SoftwareTester>
     {
-        private readonly Developer _model;
-
-        public DEVService(Developer model, string role) : base(model, role)
+        private readonly SoftwareTester _model;
+        public STService(SoftwareTester model, string role) : base(model, role)
         {
             _model = model;
             _model.Role = role;
         }
 
-        public void AddDeveloper()
+        public void AddSoftwareTester()
         {
             AddEmployee();
             Console.WriteLine("Project:");
             _model.Project = Common.Helper.AddString();
-            Console.WriteLine("IsStudent:");
-            _model.IsStudent=Convert.ToBoolean(Console.ReadLine());
+            Console.WriteLine("UsesAutomatedTests:");
+            _model.UsesAutomatedTests=Common.Helper.AddBool();
         }
     }
 }

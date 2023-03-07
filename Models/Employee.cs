@@ -15,14 +15,10 @@ namespace Models
         public string LastName { get; set; }
         public int Age { get; set; }
 
-        //public string FullInfo()
-        //{
-        //    return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}";  
-        //}
 
         public virtual string FullInfo()
         {
-            return null;
+            return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}";
         }
     }
 }

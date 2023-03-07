@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class DEVService : BaseService<Developer>
+    public class DSNRService:BaseService<Designer>
     {
-        private readonly Developer _model;
+        private readonly Designer _model;
 
-        public DEVService(Developer model, string role) : base(model, role)
+        public DSNRService(Designer model, string role) : base(model, role)
         {
             _model = model;
             _model.Role = role;
         }
 
-        public void AddDeveloper()
+        public void AddDSNR()
         {
             AddEmployee();
             Console.WriteLine("Project:");
             _model.Project = Common.Helper.AddString();
-            Console.WriteLine("IsStudent:");
-            _model.IsStudent=Convert.ToBoolean(Console.ReadLine());
+            Console.WriteLine("CanDraw:");
+            _model.CanDraw = Common.Helper.AddBool();
         }
     }
 }

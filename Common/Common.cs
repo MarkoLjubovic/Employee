@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,10 @@ namespace Common
             Console.WriteLine("Available roles: CEO, PM, DEV, DSNR, ST. Pick role you want to input:");
         }
 
-        public static void DisplayEmployees(IEmployee employee)
+        public static bool AddBool()
         {
-            Console.WriteLine($"Id:{employee.Id}, Role:{employee.Role}, FirstName:{employee.FirstName}, LastName: {employee.LastName}, Age:{employee.Age}");
+            bool unos=Convert.ToBoolean(Console.ReadLine());
+            return unos;
         }
     }
 }

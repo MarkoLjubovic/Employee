@@ -9,20 +9,21 @@ namespace Services
 {
     public class CEOService:BaseService<CEO>
     {
-        private readonly CEO model;
+        private readonly CEO _model;
 
         public CEOService(CEO model, string role) : base(model, role)
         {
-            this.model = model;
-            model.Role = role;
+            _model = model;
+            _model.Role = role;
         }
 
         public void AddCEO()
         {
             AddEmployee();
             Console.WriteLine("CeoYears:");
-            model.CeoYears = Common.Helper.AddInt();
-            Common.Helper.DisplayEmployees(model);
+            _model.CeoYears = Common.Helper.AddInt();
+            Console.WriteLine("CeoYears:");
+            _model.CeoYears = Common.Helper.AddInt();
         }
     }
 }
