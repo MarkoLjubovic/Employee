@@ -45,6 +45,7 @@
     <Compile Include="CEOService.cs" />
     <Compile Include="DEVService.cs" />
     <Compile Include="DSNRService.cs" />
+    <Compile Include="Execute\Execute.cs" />
     <Compile Include="Interface\IBaseService.cs" />
     <Compile Include="Interface\IService.cs" />
     <Compile Include="PMService.cs" />

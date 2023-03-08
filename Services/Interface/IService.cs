@@ -10,7 +10,7 @@ namespace Services.Interface
     public interface IService
     {
         //void Help(string role);
-        void Add(string role);
+        void Add(string role, Service service);
         void RoleList(string role);
         void Display();
         void Remove();

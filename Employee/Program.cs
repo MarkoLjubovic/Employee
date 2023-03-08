@@ -18,7 +18,7 @@ namespace Employee
             Models.Employee employee = new Models.Employee();
             BaseService<Models.Employee> baseService = new BaseService<Models.Employee>(employee, employee.Role);
             Service service = new Service(baseService);
-            service.Help("");
+            service.Help("",service);
         }
     }
 }

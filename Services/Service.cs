@@ -23,6 +23,7 @@ namespace Services
         DSNRService _dsNRService;
         PMService _pmService;
         STService _stService;
+
         public IBaseService GetService(string search)
         {
             switch (search)
@@ -46,69 +47,13 @@ namespace Services
             return _baseService;
         }
 
-        public void Help(string role)
+        public void Help(string role, Service service)
         {
-            Common.Helper.Help();
-            var search = Common.Helper.AddString().ToLower();
-
-            switch (search)
-            {
-                case "add":
-                    Add(role);
-                    break;
-
-                case "remove":
-                    Remove();
-                    Help(role);
-                    break;
-
-                case "display":
-                    Display();
-                    Help(role);
-                    break;
-
-                case "list":
-                    List();
-                    Help(role);
-                    break;
-
-                case "role":
-                    RoleList(role);
-                    Help(role);
-                    break;
-            }
+            Execute.Execute.ExecuteProgram(role, service);
         }
-        public void Add(string role)
+        public void Add(string role, Service service)
         {
-            Common.Helper.AddText();
-            var search = Common.Helper.AddString().ToLower();
-            IBaseService service = null;
-
-            switch (search)
-            {
-                case "ceo":
-                    service = GetService(search);
-                    break;
-
-                case "dsnr":
-                    service = GetService(search);
-                    break;
-
-                case "dev":
-                    service = GetService(search);
-                    break;
-
-                case "pm":
-                    service = GetService(search);
-                    break;
-
-                case "st":
-                    service = GetService(search);
-                    break;
-            }
-
-            service.AddEmployee();
-            Help(role);
+            Execute.Execute.Add(role, service);
         }
 
         public void RoleList(string role)
