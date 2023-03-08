@@ -22,12 +22,6 @@ namespace Common
             return unos;
         }
 
-        public static void HelpText()
-        {
-            Console.WriteLine("Available commands: 1. Add, 2. Remove, 3. Display, 4. List, 5. RoleList");
-            Console.WriteLine("Pick one:");
-        }
-
         public static void AddText()
         {
             Console.WriteLine("Option Add is picked.");
@@ -38,6 +32,12 @@ namespace Common
         {
             bool unos=Convert.ToBoolean(Console.ReadLine());
             return unos;
+        }
+
+        public static void Help()
+        {
+            Console.WriteLine("Available commands: 1. Add, 2. Remove, 3. Display, 4. List, 5. RoleList");
+            Console.WriteLine("Pick one:");
         }
     }
 }

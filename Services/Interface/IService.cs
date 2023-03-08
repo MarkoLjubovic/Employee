@@ -9,7 +9,7 @@ namespace Services.Interface
 {
     public interface IService
     {
-        void Help(string role);
+        //void Help(string role);
         void Add(string role);
         void RoleList(string role);
         void Display();

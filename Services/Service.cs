@@ -23,10 +23,32 @@ namespace Services
         DSNRService _dsNRService;
         PMService _pmService;
         STService _stService;
+        public IBaseService GetService(string search)
+        {
+            switch (search)
+            {
+                case "ceo":
+                    _cEOService = new CEOService(new CEO());
+                    return _cEOService;
+                case "dev":
+                    _dEVService = new DEVService(new Developer());
+                    return _dEVService;
+                case "dsnr":
+                    _dsNRService = new DSNRService(new Designer());
+                    return _dsNRService;
+                case "pm":
+                    _pmService = new PMService(new ProjectManager());
+                    return _pmService;
+                case "st":
+                    _stService = new STService(new SoftwareTester());
+                    return _stService;
+            }
+            return _baseService;
+        }
 
         public void Help(string role)
         {
-            Common.Helper.HelpText();
+            Common.Helper.Help();
             var search = Common.Helper.AddString().ToLower();
 
             switch (search)
@@ -60,40 +82,33 @@ namespace Services
         {
             Common.Helper.AddText();
             var search = Common.Helper.AddString().ToLower();
+            IBaseService service = null;
 
             switch (search)
             {
                 case "ceo":
-                    _cEOService = new CEOService(new CEO());
-                    _cEOService.AddEmployee();
-                    Help(role);
+                    service = GetService(search);
                     break;
 
                 case "dsnr":
-                    _dsNRService = new DSNRService(new Designer());
-                    _dsNRService.AddEmployee();
-                    Help(role);
+                    service = GetService(search);
                     break;
 
                 case "dev":
-                    _dEVService = new DEVService(new Developer());
-                    _dEVService.AddEmployee();
-                    Help(role);
+                    service = GetService(search);
                     break;
 
                 case "pm":
-                    _pmService=new PMService(new ProjectManager());
-                    _pmService.AddEmployee();
-                    Help(role);
+                    service = GetService(search);
                     break;
 
                 case "st":
-                    _stService=new STService(new SoftwareTester());
-                    _stService.AddEmployee();
-                    Help(role);
+                    service = GetService(search);
                     break;
             }
 
+            service.AddEmployee();
+            Help(role);
         }
 
         public void RoleList(string role)
