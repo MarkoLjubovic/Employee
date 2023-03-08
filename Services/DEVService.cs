@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,21 @@ namespace Services
 {
     public class DEVService : BaseService<Developer>
     {
-        private readonly Developer _model;
-
-        public DEVService(Developer model, string role) : base(model, role)
+        public DEVService(Developer model) : base(model, "DEV")
         {
-            _model = model;
-            _model.Role = role;
         }
 
-        public void AddDeveloper()
+        public override IEmployee AddEmployee()
         {
-            AddEmployee();
+            base.AddEmployee();
             Console.WriteLine("Project:");
-            _model.Project = Common.Helper.AddString();
+            Model.Project = Common.Helper.AddString();
             Console.WriteLine("IsStudent:");
-            _model.IsStudent=Convert.ToBoolean(Console.ReadLine());
+            Model.IsStudent=Convert.ToBoolean(Console.ReadLine());
+
+            EmployeeStorage.Storage.AddEmployee(Model);
+
+            return Model;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,21 @@ namespace Services
 {
     public class DSNRService:BaseService<Designer>
     {
-        private readonly Designer _model;
 
-        public DSNRService(Designer model, string role) : base(model, role)
+        public DSNRService(Designer model) : base(model, "DSNR")
         {
-            _model = model;
-            _model.Role = role;
         }
 
-        public void AddDSNR()
+        public override IEmployee AddEmployee()
         {
             AddEmployee();
             Console.WriteLine("Project:");
-            _model.Project = Common.Helper.AddString();
+            Model.Project = Common.Helper.AddString();
             Console.WriteLine("CanDraw:");
-            _model.CanDraw = Common.Helper.AddBool();
+            Model.CanDraw = Common.Helper.AddBool();
+            EmployeeStorage.Storage.AddEmployee(Model);
+
+            return Model;
         }
     }
 }

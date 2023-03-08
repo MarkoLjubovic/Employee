@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,20 @@ namespace Services
 {
     public class STService : BaseService<SoftwareTester>
     {
-        private readonly SoftwareTester _model;
-        public STService(SoftwareTester model, string role) : base(model, role)
+        public STService(SoftwareTester model) : base(model, "ST")
         {
-            _model = model;
-            _model.Role = role;
         }
 
-        public void AddSoftwareTester()
+        public override IEmployee AddEmployee()
         {
             AddEmployee();
             Console.WriteLine("Project:");
-            _model.Project = Common.Helper.AddString();
+            Model.Project = Common.Helper.AddString();
             Console.WriteLine("UsesAutomatedTests:");
-            _model.UsesAutomatedTests=Common.Helper.AddBool();
+            Model.UsesAutomatedTests=Common.Helper.AddBool();
+            EmployeeStorage.Storage.AddEmployee(Model);
+
+            return Model;
         }
     }
 }

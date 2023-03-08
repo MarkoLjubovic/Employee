@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,18 @@ namespace Services
 {
     public class PMService : BaseService<ProjectManager>
     {
-        private readonly ProjectManager _model;
-        public PMService(ProjectManager model, string role) : base(model, role)
+        public PMService(ProjectManager model) : base(model, "PM")
         {
-            _model = model;
-            _model.Role = role;
         }
 
-        public void AddProjectManager()
+        public override IEmployee AddEmployee()
         {
             AddEmployee();
             Console.WriteLine("Project:");
-            _model.Project = Common.Helper.AddString();
+            Model.Project = Common.Helper.AddString();
+            EmployeeStorage.Storage.AddEmployee(Model);
+
+            return Model;
         }
     }
 }

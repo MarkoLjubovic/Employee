@@ -13,20 +13,16 @@ namespace Services
     public class Service : IService
     {
         protected readonly IBaseService _baseService;
-        protected readonly CEOService _ceoService;
-        protected readonly DEVService _devService;
-        protected readonly DSNRService _dsnrService;
-        protected readonly PMService _pmService;
-        protected readonly STService _sTService;
-        public Service(IBaseService baseService, CEOService cEOService, DEVService devService, DSNRService dSNRService, PMService pMService, STService sTService)
+        public Service(IBaseService baseService)
         {
             _baseService = baseService;
-            _ceoService = cEOService;
-            _devService = devService;
-            _dsnrService = dSNRService;
-            _pmService = pMService;
-            _sTService = sTService;
         }
+
+        CEOService _cEOService;
+        DEVService _dEVService;
+        DSNRService _dsNRService;
+        PMService _pmService;
+        STService _stService;
 
         public void Help(string role)
         {
@@ -68,34 +64,42 @@ namespace Services
             switch (search)
             {
                 case "ceo":
-                    _ceoService.AddCEO();
+                    _cEOService = new CEOService(new CEO());
+                    _cEOService.AddEmployee();
                     Help(role);
                     break;
 
                 case "dsnr":
-                    _dsnrService.AddDSNR();
+                    _dsNRService = new DSNRService(new Designer());
+                    _dsNRService.AddEmployee();
                     Help(role);
                     break;
 
                 case "dev":
-                    _devService.AddDeveloper();
+                    _dEVService = new DEVService(new Developer());
+                    _dEVService.AddEmployee();
                     Help(role);
                     break;
 
                 case "pm":
-                    _pmService.AddProjectManager();
+                    _pmService=new PMService(new ProjectManager());
+                    _pmService.AddEmployee();
                     Help(role);
                     break;
 
                 case "st":
-                    _sTService.AddSoftwareTester();
+                    _stService=new STService(new SoftwareTester());
+                    _stService.AddEmployee();
                     Help(role);
                     break;
             }
+
         }
 
         public void RoleList(string role)
         {
+            Console.WriteLine("Type role:");
+            role = Common.Helper.AddString().ToUpper();
             _baseService.RoleList(role);
         }
 

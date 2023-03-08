@@ -13,8 +13,8 @@ namespace Services
     public class BaseService<T> : IBaseService where T : IEmployee
     {
 
-        private  T Model { get; set; }
-        private string role;
+        public  T Model { get; set; }
+        public string role;
 
         public BaseService(T model, string role)
         {
@@ -22,7 +22,7 @@ namespace Services
             this.role = role;
         }
 
-        public IEmployee AddEmployee()
+        public virtual IEmployee AddEmployee()
         {
             Console.WriteLine("Id:");
             Model.Id= Common.Helper.AddInt();
@@ -34,14 +34,11 @@ namespace Services
             Console.WriteLine("Age:");
             Model.Age = Common.Helper.AddInt();
 
-            return EmployeeStorage.Storage.AddEmployee(Model);
+            return Model;
         }
 
         public void RoleList(string role)
         {
-            Console.WriteLine("Type role:");
-            role=Common.Helper.AddString().ToUpper();
-
             foreach (var employee in EmployeeStorage.Storage.FindRole(role))
             {
                 Console.WriteLine(employee.FullInfo());
