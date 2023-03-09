@@ -10,7 +10,7 @@ namespace Services
 {
     public class CEOService:BaseService<CEO>
     {
-        public CEOService(CEO model) : base(model, "CEO")
+        public CEOService(CEO model) : base(model, "ceo")
         {
         }
 
@@ -18,7 +18,7 @@ namespace Services
         {
             base.AddEmployee();
             Console.WriteLine("CeoYears:");
-            Model.CeoYears = Common.Helper.AddInt();
+            Model.CeoYears = Common.Validations.IntValidation();
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

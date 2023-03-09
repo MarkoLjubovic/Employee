@@ -25,14 +25,14 @@ namespace Services
         public virtual IEmployee AddEmployee()
         {
             Console.WriteLine("Id:");
-            Model.Id= Common.Helper.AddInt();
+            Model.Id = Common.Validations.IntValidation();
             Model.Role = role;
             Console.WriteLine("FirstName:");
-            Model.FirstName = Common.Helper.AddString();
+            Model.FirstName = Common.Validations.StringValidation();
             Console.WriteLine("LastName:");
-            Model.LastName = Common.Helper.AddString();
+            Model.LastName = Common.Validations.StringValidation();
             Console.WriteLine("Age:");
-            Model.Age = Common.Helper.AddInt();
+            Model.Age = Common.Validations.IntValidation();
 
             return Model;
         }

@@ -24,7 +24,6 @@ namespace Common
 
         public static void AddText()
         {
-            Console.WriteLine("Option Add is picked.");
             Console.WriteLine("Available roles: CEO, PM, DEV, DSNR, ST. Pick role you want to input:");
         }
 
@@ -38,6 +37,20 @@ namespace Common
         {
             Console.WriteLine("Available commands: 1. Add, 2. Remove, 3. Display, 4. List, 5. RoleList");
             Console.WriteLine("Pick one:");
+        }
+
+        public static string AddRole()
+        {
+            string role;
+
+            do
+            {
+                Helper.AddText();
+                role = Helper.AddString();
+
+            } while (Validations.RoleValidation(role) == false);
+
+            return role;
         }
     }
 }

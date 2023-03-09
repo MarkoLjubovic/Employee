@@ -8,6 +8,25 @@ namespace Common
 {
     public class Constants
     {
+        public static List<string> AllCommnands = new List<string>()
+        {
+            Command.Add,
+            Command.Remove,
+            Command.Display,
+            Command.RoleList,
+            Command.List
+        };
+
+        public static List<string> AllRoles = new List<string>()
+        {
+            Role.PM,
+            Role.DEV,
+            Role.DSNR,
+            Role.CEO,
+            Role.ST,
+            Role.BASE
+        };
+
         public class Command
         {
             public const string Add = "add";

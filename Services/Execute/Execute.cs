@@ -16,12 +16,13 @@ namespace Services.Execute
         public static void ExecuteProgram(string role)
         {
             Helper.Help();
-            var search = Helper.AddString().ToLower();
+            var search=Validations.TextValidation();
+            Validations.CommandValidation(search);
 
             switch (search)
             {
                 case Constants.Command.Add:
-                    AddCommand(role);
+                    AddCommand();
                     break;
 
                 case Constants.Command.Remove:
@@ -44,32 +45,33 @@ namespace Services.Execute
             ExecuteProgram(role);
         }
 
-        public static void AddCommand(string role)
+        public static void AddCommand()
         {
-            Helper.AddText();
-            var search = Helper.AddString().ToLower();
-            IBaseService service = null;
+            string role;
+            role=Helper.AddRole();
 
-            switch (search)
+            IBaseService service =null;
+
+            switch (role)
             {
                 case Constants.Role.CEO:
-                    service = ServiceFactory.ServiceFactory.GetService("ceo");
+                    service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
 
                 case Constants.Role.DSNR:
-                    service = ServiceFactory.ServiceFactory.GetService("dsnr");
+                    service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
 
                 case Constants.Role.DEV:
-                    service = ServiceFactory.ServiceFactory.GetService("dev");
+                    service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
 
                 case Constants.Role.PM:
-                    service = ServiceFactory.ServiceFactory.GetService("pm");
+                    service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
 
                 case Constants.Role.ST:
-                    service = ServiceFactory.ServiceFactory.GetService("st");
+                    service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
             }
 
