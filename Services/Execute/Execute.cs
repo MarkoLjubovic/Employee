@@ -1,4 +1,5 @@
 ﻿using Common;
+using Models;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,73 +11,70 @@ namespace Services.Execute
 {
     public class Execute
     {
-        private readonly Service _service;
-        public Execute(Service service)
-        {
-            _service = service;
-        }
-        public static void ExecuteProgram(string role, Service service)
+        private static IBaseService _service = ServiceFactory.ServiceFactory.GetService(Constants.Role.BASE);
+
+        public static void ExecuteProgram(string role)
         {
             Helper.Help();
             var search = Helper.AddString().ToLower();
 
             switch (search)
             {
-                case "add":
-                    
-                    service.Add(role, service);
+                case Constants.Command.Add:
+                    AddCommand(role);
                     break;
 
-                case "remove":
-                    service.Remove();
+                case Constants.Command.Remove:
+                    _service.RemoveEmployee();
                     break;
 
-                case "display":
-                    service.Display();
+                case Constants.Command.Display:
+                    _service.EmployeeDisplay();
                     break;
 
-                case "list":
-                    service.List();
+                case Constants.Command.List:
+                    _service.EmployeeList();
                     break;
 
-                case "role":
-                    service.RoleList(role);
+                case Constants.Command.RoleList:
+                    _service.RoleList(role);
                     break;
             }
-            ExecuteProgram(role,service);
+
+            ExecuteProgram(role);
         }
 
-        public static void Add(string role, Service service)
+        public static void AddCommand(string role)
         {
-            Common.Helper.AddText();
-            var search = Common.Helper.AddString().ToLower();
-            IBaseService iService = null;
+            Helper.AddText();
+            var search = Helper.AddString().ToLower();
+            IBaseService service = null;
 
             switch (search)
             {
-                case "ceo":
-                    iService = service.GetService(search);
+                case Constants.Role.CEO:
+                    service = ServiceFactory.ServiceFactory.GetService("ceo");
                     break;
 
-                case "dsnr":
-                    iService = service.GetService(search);
+                case Constants.Role.DSNR:
+                    service = ServiceFactory.ServiceFactory.GetService("dsnr");
                     break;
 
-                case "dev":
-                    iService = service.GetService(search);
+                case Constants.Role.DEV:
+                    service = ServiceFactory.ServiceFactory.GetService("dev");
                     break;
 
-                case "pm":
-                    iService = service.GetService(search);
+                case Constants.Role.PM:
+                    service = ServiceFactory.ServiceFactory.GetService("pm");
                     break;
 
-                case "st":
-                    iService = service.GetService(search);
+                case Constants.Role.ST:
+                    service = ServiceFactory.ServiceFactory.GetService("st");
                     break;
             }
 
-            iService.AddEmployee();
-            ExecuteProgram(role,service);
+            service.AddEmployee();
+            ExecuteProgram(role);
         }
     }
 }

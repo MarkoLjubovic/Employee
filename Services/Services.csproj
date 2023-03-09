@@ -47,10 +47,9 @@
     <Compile Include="DSNRService.cs" />
     <Compile Include="Execute\Execute.cs" />
     <Compile Include="Interface\IBaseService.cs" />
-    <Compile Include="Interface\IService.cs" />
     <Compile Include="PMService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
+    <Compile Include="ServiceFactory\ServiceFactory.cs" />
     <Compile Include="STService.cs" />
   </ItemGroup>
   <ItemGroup>

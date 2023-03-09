@@ -2,6 +2,7 @@
 using EmployeeStorage;
 using Models;
 using Services;
+using Services.Execute;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,7 @@ namespace Employee
     {
         public static void Main(string[] args)
         {
-            Models.Employee employee = new Models.Employee();
-            BaseService<Models.Employee> baseService = new BaseService<Models.Employee>(employee, employee.Role);
-            Service service = new Service(baseService);
-            service.Help("",service);
+            Execute.ExecuteProgram("");
         }
     }
 }

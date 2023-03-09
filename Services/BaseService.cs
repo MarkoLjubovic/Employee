@@ -39,6 +39,9 @@ namespace Services
 
         public void RoleList(string role)
         {
+            Console.WriteLine("Type role:");
+            role = Common.Helper.AddString().ToUpper();
+
             foreach (var employee in EmployeeStorage.Storage.FindRole(role))
             {
                 Console.WriteLine(employee.FullInfo());
