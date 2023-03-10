@@ -10,7 +10,7 @@ namespace Services
 {
     public class CEOService:BaseService<CEO>
     {
-        public CEOService(CEO model) : base(model, "ceo")
+        public CEOService(CEO model) : base(model, Common.Constants.Role.CEO)
         {
         }
 

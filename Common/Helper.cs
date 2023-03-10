@@ -10,6 +10,21 @@ namespace Common
 {
     public class Helper
     {
+        public static IEmployee EmployeeInput(IEmployee Model, string role)
+        {
+            Model.Guid = Helper.GenerateGuid();
+            Model.Id = Helper.GenerateId();
+            Model.Role = role;
+            Console.WriteLine("FirstName:");
+            Model.FirstName = Validations.StringValidation();
+            Console.WriteLine("LastName:");
+            Model.LastName = Validations.StringValidation();
+            Console.WriteLine("Age:");
+            Model.Age = Validations.IntValidation();
+
+            return Model;
+        }
+
         public static string AddString()
         {
             string unos=Console.ReadLine();
@@ -52,6 +67,7 @@ namespace Common
 
             return role;
         }
+
         private static int id = 1;
         public static int GenerateId()
         {
@@ -60,8 +76,7 @@ namespace Common
 
         public static Guid GenerateGuid()
         {
-            Guid id = Guid.NewGuid();
-            return id;
+            return Guid.NewGuid();
         }
     }
 }

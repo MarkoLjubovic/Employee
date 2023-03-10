@@ -24,17 +24,7 @@ namespace Services
 
         public virtual IEmployee AddEmployee()
         {
-            Model.Guid = Common.Helper.GenerateGuid();
-            Model.Id = Common.Helper.GenerateId();
-            Model.Role = role;
-            Console.WriteLine("FirstName:");
-            Model.FirstName = Common.Validations.StringValidation();
-            Console.WriteLine("LastName:");
-            Model.LastName = Common.Validations.StringValidation();
-            Console.WriteLine("Age:");
-            Model.Age = Common.Validations.IntValidation();
-
-            return Model;
+            return Common.Helper.EmployeeInput(Model,role);
         }
 
         public void RoleList(string role)
@@ -63,7 +53,7 @@ namespace Services
         public bool RemoveEmployee()
         {
             Console.WriteLine("Input Employee Id:");
-            var employeeId=Convert.ToInt32(Console.ReadLine());
+            var employeeId = Common.Validations.IntValidation();
 
             var employeeToRemove = EmployeeStorage.Storage.Display().FirstOrDefault(x => x.Id == employeeId);
 

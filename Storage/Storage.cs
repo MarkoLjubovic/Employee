@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeStorage
 {
-    public class Storage //: IStorage
+    public class Storage
     {
         public static List<IEmployee> employeesList=new List<IEmployee>();
 

@@ -10,7 +10,7 @@ namespace Services
 {
     public class STService : BaseService<SoftwareTester>
     {
-        public STService(SoftwareTester model) : base(model, "st")
+        public STService(SoftwareTester model) : base(model, Common.Constants.Role.ST)
         {
         }
 
@@ -20,7 +20,7 @@ namespace Services
             Console.WriteLine("Project:");
             Model.Project = Common.Validations.StringValidation();
             Console.WriteLine("UsesAutomatedTests:");
-            Model.UsesAutomatedTests=Common.Helper.AddBool();
+            Model.UsesAutomatedTests = Common.Validations.BoolValidation();
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

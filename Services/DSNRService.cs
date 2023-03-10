@@ -11,7 +11,7 @@ namespace Services
     public class DSNRService:BaseService<Designer>
     {
 
-        public DSNRService(Designer model) : base(model, "dsnr")
+        public DSNRService(Designer model) : base(model, Common.Constants.Role.DSNR)
         {
         }
 

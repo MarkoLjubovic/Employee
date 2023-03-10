@@ -10,7 +10,7 @@ namespace Services
 {
     public class PMService : BaseService<ProjectManager>
     {
-        public PMService(ProjectManager model) : base(model, "pm")
+        public PMService(ProjectManager model) : base(model, Common.Constants.Role.PM)
         {
         }
 
