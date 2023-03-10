@@ -8,6 +8,7 @@ namespace Interfaces
 {
     public interface IEmployee
     {
+        Guid Guid { get; set; }
         int Id { get; set; }
         string Role { get; set; }
         string FirstName { get; set; }

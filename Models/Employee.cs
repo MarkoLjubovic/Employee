@@ -9,6 +9,7 @@ namespace Models
 {
     public class Employee:IEmployee
     {
+        public Guid Guid { get; set; }
         public int Id { get; set; }
         public string Role { get; set; }    
         public string FirstName { get; set; }
@@ -18,7 +19,7 @@ namespace Models
 
         public virtual string FullInfo()
         {
-            return $"Id:{Id}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}";
+            return $"Guid:{Guid}, Role:{Role}, FirstName:{FirstName}, LastName: {LastName}, Age:{Age}";
         }
     }
 }

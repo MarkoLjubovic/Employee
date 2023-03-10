@@ -24,8 +24,8 @@ namespace Services
 
         public virtual IEmployee AddEmployee()
         {
-            Console.WriteLine("Id:");
-            Model.Id = Common.Validations.IntValidation();
+            Model.Guid = Common.Helper.GenerateGuid();
+            Model.Id = Common.Helper.GenerateId();
             Model.Role = role;
             Console.WriteLine("FirstName:");
             Model.FirstName = Common.Validations.StringValidation();

@@ -52,5 +52,16 @@ namespace Common
 
             return role;
         }
+        private static int id = 1;
+        public static int GenerateId()
+        {
+            return id++;
+        }
+
+        public static Guid GenerateGuid()
+        {
+            Guid id = Guid.NewGuid();
+            return id;
+        }
     }
 }
