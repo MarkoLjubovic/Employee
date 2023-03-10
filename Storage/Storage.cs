@@ -45,5 +45,10 @@ namespace EmployeeStorage
         {
             return employeesList.Where(x=>x.Role==role).ToList();
         }
+
+        public static bool RoleExist(string role)
+        {
+            return employeesList.Exists(x=>x.Role==role);
+        }
     }
 }

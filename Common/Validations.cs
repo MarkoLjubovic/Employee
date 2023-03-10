@@ -14,12 +14,10 @@ namespace Common
 
             if (Constants.AllCommnands.FirstOrDefault(c => c.Equals(command)) != null)
             {
-                Console.WriteLine($"Option {command} is picked.");
                 return true;
             }
             else
             {
-                Console.WriteLine("That command doesn't exists, input again.");
                 return false;
             }
         }
@@ -28,12 +26,10 @@ namespace Common
         {
             if (Constants.AllRoles.FirstOrDefault(c => c.Equals(role)) != null)
             {
-                Console.WriteLine($"Option {role} is picked.");
                 return true;
             }
             else
             {
-                Console.WriteLine("That role doesn't exists, input again.");
                 return false;
             }
         }
@@ -61,13 +57,13 @@ namespace Common
         public static string StringValidation()
         {
             string input;
+            input = Helper.AddString();
 
-            do
+            if (string.IsNullOrEmpty(input))
             {
-               input=Helper.AddString();
-                Console.WriteLine("Can't be empty, input again.");
-
-            } while (string.IsNullOrEmpty(input));
+                Console.WriteLine("Can't be empty.");
+                input = Helper.AddString();
+            }
 
             return input;
         }

@@ -55,6 +55,11 @@ namespace Services.Execute
             switch (role)
             {
                 case Constants.Role.CEO:
+                    if (EmployeeStorage.Storage.RoleExist(role))
+                    {
+                        Console.WriteLine("Ceo already exists.");
+                        return;
+                    }
                     service = ServiceFactory.ServiceFactory.GetService(role);
                     break;
 
