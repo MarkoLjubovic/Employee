@@ -10,7 +10,7 @@ namespace Services
 {
     public class DEVService : BaseService<Developer>
     {
-        public DEVService(Developer model) : base(model, "DEV")
+        public DEVService(Developer model) : base(model, "dev")
         {
         }
 
@@ -18,10 +18,9 @@ namespace Services
         {
             base.AddEmployee();
             Console.WriteLine("Project:");
-            Model.Project = Common.Helper.AddString();
+            Model.Project = Common.Validations.StringValidation();
             Console.WriteLine("IsStudent:");
             Model.IsStudent=Convert.ToBoolean(Console.ReadLine());
-
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

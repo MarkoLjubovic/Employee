@@ -34,10 +34,20 @@ namespace Common
             }
         }
 
-        public static string TextValidation()
+        public static string InputValidation()
         {
             var input = Helper.AddString().ToLower();
 
+            return input;
+        }
+
+        public static bool BoolValidation()
+        {
+            bool input;
+            while (!bool.TryParse(Helper.AddString(), out input))
+            {
+                Console.WriteLine("Input needs to be bool.");
+            }
             return input;
         }
 

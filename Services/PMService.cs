@@ -10,15 +10,15 @@ namespace Services
 {
     public class PMService : BaseService<ProjectManager>
     {
-        public PMService(ProjectManager model) : base(model, "PM")
+        public PMService(ProjectManager model) : base(model, "pm")
         {
         }
 
         public override IEmployee AddEmployee()
         {
-            AddEmployee();
+            base.AddEmployee();
             Console.WriteLine("Project:");
-            Model.Project = Common.Helper.AddString();
+            Model.Project = Common.Validations.StringValidation();
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

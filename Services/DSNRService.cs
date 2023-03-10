@@ -11,17 +11,17 @@ namespace Services
     public class DSNRService:BaseService<Designer>
     {
 
-        public DSNRService(Designer model) : base(model, "DSNR")
+        public DSNRService(Designer model) : base(model, "dsnr")
         {
         }
 
         public override IEmployee AddEmployee()
         {
-            AddEmployee();
+            base.AddEmployee();
             Console.WriteLine("Project:");
-            Model.Project = Common.Helper.AddString();
+            Model.Project = Common.Validations.StringValidation();
             Console.WriteLine("CanDraw:");
-            Model.CanDraw = Common.Helper.AddBool();
+            Model.CanDraw = Common.Validations.BoolValidation();
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

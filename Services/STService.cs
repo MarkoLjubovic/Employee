@@ -10,15 +10,15 @@ namespace Services
 {
     public class STService : BaseService<SoftwareTester>
     {
-        public STService(SoftwareTester model) : base(model, "ST")
+        public STService(SoftwareTester model) : base(model, "st")
         {
         }
 
         public override IEmployee AddEmployee()
         {
-            AddEmployee();
+            base.AddEmployee();
             Console.WriteLine("Project:");
-            Model.Project = Common.Helper.AddString();
+            Model.Project = Common.Validations.StringValidation();
             Console.WriteLine("UsesAutomatedTests:");
             Model.UsesAutomatedTests=Common.Helper.AddBool();
             EmployeeStorage.Storage.AddEmployee(Model);

@@ -40,11 +40,18 @@ namespace Services
         public void RoleList(string role)
         {
             Console.WriteLine("Type role:");
-            role = Common.Helper.AddString().ToUpper();
+            role = Common.Helper.AddString().ToLower();
 
-            foreach (var employee in EmployeeStorage.Storage.FindRole(role))
+            if (EmployeeStorage.Storage.RoleExist(role))
             {
-                Console.WriteLine(employee.FullInfo());
+                foreach(var employee in EmployeeStorage.Storage.FindRole(role))
+                {
+                    Console.WriteLine(employee.FullInfo());
+                }
+            }
+            else
+            {
+                Console.WriteLine("User with that role doesn't exist.");
             }
         }
 
