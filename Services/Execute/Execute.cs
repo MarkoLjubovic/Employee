@@ -16,7 +16,7 @@ namespace Services.Execute
         public static void ExecuteProgram(string role)
         {
             Helper.Help();
-            var search=Validations.InputValidation();
+            var search = Validations.InputValidation();
             Validations.CommandValidation(search);
 
             switch (search)

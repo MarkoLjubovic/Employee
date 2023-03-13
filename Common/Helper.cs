@@ -10,43 +10,73 @@ namespace Common
 {
     public class Helper
     {
-        public static IEmployee EmployeeInput(IEmployee Model, string role)
+        public static string AddString(string text)
         {
-            Model.Guid = Helper.GenerateGuid();
-            Model.Id = Helper.GenerateId();
-            Model.Role = role;
-            Console.WriteLine("FirstName:");
-            Model.FirstName = Validations.StringValidation();
-            Console.WriteLine("LastName:");
-            Model.LastName = Validations.StringValidation();
-            Console.WriteLine("Age:");
-            Model.Age = Validations.IntValidation();
+            string input;
 
-            return Model;
+            do
+            {
+                Console.WriteLine($"{text}:");
+                input = Console.ReadLine();
+
+                if (!Validations.StringValidation(input))
+                {
+                    Console.WriteLine("Can't be empty.");
+                }
+            }
+            while (!Validations.StringValidation(input));
+
+
+            return input;
         }
 
-        public static string AddString()
+        public static int AddInt(string text)
         {
-            string unos=Console.ReadLine();
-            return unos;
+            string check;
+            int input=0;
+
+            do
+            {
+                Console.WriteLine($"{text}:");
+                check = Console.ReadLine();
+
+                if (!Validations.IntValidation(check, input))
+                {
+                    Console.WriteLine("Can't be empty or letter.");
+                }
+
+            } while (!Validations.IntValidation(check, input));
+
+            input = Convert.ToInt32(check);
+            return input;
         }
 
-        public static int AddInt()
+        public static bool AddBool(string text)
         {
-            int unos=Convert.ToInt32(Console.ReadLine());
-            return unos;
+            string check;
+            bool input=false;
+
+            do
+            {
+                Console.WriteLine($"{text}:");
+                check = Console.ReadLine();
+
+                if (!Validations.BoolValidation(check, input))
+                {
+                    Console.WriteLine("Needs to be true or false.");
+                }
+
+            } while (!Validations.BoolValidation(check, input));
+
+            input=Convert.ToBoolean(check);
+            return input;
         }
 
         public static void AddText()
         {
-            Console.WriteLine("Available roles: CEO, PM, DEV, DSNR, ST. Pick role you want to input:");
+            Console.WriteLine("Available roles: CEO, PM, DEV, DSNR, ST.");
         }
 
-        public static bool AddBool()
-        {
-            bool unos=Convert.ToBoolean(Console.ReadLine());
-            return unos;
-        }
 
         public static void Help()
         {
@@ -61,7 +91,7 @@ namespace Common
             do
             {
                 Helper.AddText();
-                role = Helper.AddString();
+                role = Helper.AddString("Pick role you want to input");
 
             } while (Validations.RoleValidation(role) == false);
 

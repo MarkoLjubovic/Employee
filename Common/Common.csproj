@@ -55,6 +55,10 @@
       <Project>{73FCFD06-477D-476D-8BC3-4D982244237F}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Storage\EmployeeStorage.csproj">
+      <Project>{0162122f-e8bb-4e6e-b1b1-0f5dc99019e6}</Project>
+      <Name>EmployeeStorage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

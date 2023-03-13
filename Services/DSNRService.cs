@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Common;
+using Interfaces;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,8 @@ namespace Services
         public override IEmployee AddEmployee()
         {
             base.AddEmployee();
-            Console.WriteLine("Project:");
-            Model.Project = Common.Validations.StringValidation();
-            Console.WriteLine("CanDraw:");
-            Model.CanDraw = Common.Validations.BoolValidation();
+            Model.Project = Helper.AddString("Project");
+            Model.CanDraw = Helper.AddBool("CanDraw");
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;

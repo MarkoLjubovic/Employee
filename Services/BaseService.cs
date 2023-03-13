@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Common;
+using Interfaces;
 using Models;
 using Services.Interface;
 using Storage.IStorage;
@@ -24,13 +25,19 @@ namespace Services
 
         public virtual IEmployee AddEmployee()
         {
-            return Common.Helper.EmployeeInput(Model,role);
+            Model.Guid = Helper.GenerateGuid();
+            Model.Id = Helper.GenerateId();
+            Model.Role = role;
+            Model.FirstName = Helper.AddString("FirstName");
+            Model.LastName = Helper.AddString("LastName");
+            Model.Age = Helper.AddInt("Age");
+
+            return Model;
         }
 
         public void RoleList(string role)
         {
-            Console.WriteLine("Type role:");
-            role = Common.Helper.AddString().ToLower();
+            role = Helper.AddString("Role").ToLower();
 
             if (EmployeeStorage.Storage.RoleExist(role))
             {
@@ -52,8 +59,7 @@ namespace Services
 
         public bool RemoveEmployee()
         {
-            Console.WriteLine("Input Employee Id:");
-            var employeeId = Common.Validations.IntValidation();
+            var employeeId = Helper.AddInt("Input Employee Id");
 
             var employeeToRemove = EmployeeStorage.Storage.Display().FirstOrDefault(x => x.Id == employeeId);
 

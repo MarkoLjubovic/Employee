@@ -36,46 +36,27 @@ namespace Common
 
         public static string InputValidation()
         {
-            var input = Helper.AddString().ToLower();
-
-            return input;
+            return Console.ReadLine().ToLower();
         }
 
-        public static bool BoolValidation()
+        public static bool BoolValidation(string check, bool input)
         {
-            bool input;
-            while (!bool.TryParse(Helper.AddString(), out input))
-            {
-                Console.WriteLine("Input needs to be bool.");
-            }
-            return input;
+            return bool.TryParse(check, out input);
         }
 
-        public static int IntValidation()
+        public static bool IntValidation(string check, int input)
         {
-            int input;
-
-            while (!int.TryParse(Helper.AddString(), out input))
-            {
-                Console.WriteLine("Can only input number.");
-            }
-
-            return input;
-
+            return int.TryParse(check, out input);
         }
 
-        public static string StringValidation()
+        public static bool StringValidation(string input)
         {
-            string input;
-            input = Helper.AddString();
-
             if (string.IsNullOrEmpty(input))
             {
-                Console.WriteLine("Can't be empty.");
-                input = Helper.AddString();
+                return false;
             }
 
-            return input;
+            return true;
         }
     }
 }

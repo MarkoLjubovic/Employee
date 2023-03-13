@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using Common;
+using Interfaces;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,7 @@ namespace Services
         public override IEmployee AddEmployee()
         {
             base.AddEmployee();
-            Console.WriteLine("CeoYears:");
-            Model.CeoYears = Common.Validations.IntValidation();
+            Model.CeoYears = Helper.AddInt("CeoYears");
             EmployeeStorage.Storage.AddEmployee(Model);
 
             return Model;
